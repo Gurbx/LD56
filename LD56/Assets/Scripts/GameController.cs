@@ -29,7 +29,7 @@ namespace Gameplay
         public Action MobWaveUpdated;
         public Action HeartsUpdated;
 
-        private static int CurrentLevelIndex;
+        public static int CurrentLevelIndex;
         private Level _level;
         
         private void Awake()
@@ -59,7 +59,8 @@ namespace Gameplay
             GoldAmountChanged?.Invoke();
             HeartsUpdated?.Invoke();
             waveUi.Show();
-
+            _isGameOver = false;
+            
             foreach (Transform child in mobContainer)
             {
                 child.DOKill(child);
@@ -125,16 +126,19 @@ namespace Gameplay
         private bool _isGameOver;
         private void GameOver()
         {
-            if (Hearts > 0) 
+            if (Hearts > 0)
+            {
                 gameOver.TriggerGameOver();
-            else if (CurrentLevelIndex+1 < levels.Length)
+                return;
+            }
+            if (CurrentLevelIndex+1 < levels.Length)
             {
                 CurrentLevelIndex++;
-                levelTransition.TransitionLevel();
+                levelTransition.TransitionLevel(false);
             }
             else
             {
-                //TODO win screen
+                levelTransition.TransitionLevel(true);
             }
         }
         
