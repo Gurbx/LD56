@@ -7,34 +7,37 @@ using UnityEngine;
 namespace Gameplay
 {
     public class Mob : MonoBehaviour
-    {
-        [SerializeField] private int health = 10;
-        [SerializeField] private float speed = 1f;
-        [SerializeField] private List<Vector3> _pathCoords;
-        
+    { 
+        private List<Vector3> _pathCoords;
+        private MobData _mobData;
         private int _currentPathIndex;
         private int _health;
-
-        private void Start()
+        private float _speed;
+        
+        public void Spawn(MobData mobData, Vector3 spawnCoords, List<Vector3> path)
         {
-            Spawn(transform.position);
+            _mobData = mobData;
+            _pathCoords = path;
+            _currentPathIndex = 0;
+            transform.position = new Vector2(spawnCoords.x, spawnCoords.y);
+            _health = _mobData.Health;
+            _speed = _mobData.Speed;
+            CheckPointReached();
         }
 
         public void Damage(int damage)
         {
             _health -= damage;
             if (_health <= 0)
+            {
                 _health = 0;
+                GameController.Instance.RemoveMob(this);
+                transform.DOKill();
+                transform.DOShakeScale(0.5f);
+                Destroy(gameObject, 0.6f);
+            }
         }
         
-        public void Spawn(Vector3 spawnCoords)
-        {
-            _currentPathIndex = 0;
-            transform.position = new Vector2(spawnCoords.x, spawnCoords.y);
-            _health = health;
-            CheckPointReached();
-        }
-
         private void CheckPointReached()
         {
             if (_currentPathIndex >= _pathCoords.Count)
@@ -44,7 +47,7 @@ namespace Gameplay
             }
             
             var distanceToNext = Vector3.Distance(transform.position, _pathCoords[_currentPathIndex]);
-            float durationToNext = distanceToNext / speed;
+            float durationToNext = distanceToNext / _speed;
             
             transform.DOMove(_pathCoords[_currentPathIndex], durationToNext).SetEase(Ease.Linear)
                 .OnComplete(() => CheckPointReached());

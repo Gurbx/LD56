@@ -13,6 +13,8 @@ namespace Gameplay
         public int Health = 10;
         public int Armor = 0;
         public float Speed = 1f;
+        public int MaxUnitSize;
         public Mob Prefab;
+        public Sprite Icon;
     }
 }

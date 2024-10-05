@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Mob 2
   Description: This is a stronger mob
+  Cost: 100
   Health: 20
   Armor: 0
-  Speed: 1
+  Speed: 2
+  MaxUnitSize: 5
   Prefab: {fileID: 4599663736446049187, guid: 0dcc7c8bc1647b64090f3bbb63b73d48, type: 3}
+  Icon: {fileID: 21300000, guid: 9865ca019e5a293409ffdee94f640b91, type: 3}
