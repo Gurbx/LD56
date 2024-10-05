@@ -14,6 +14,7 @@ namespace Gameplay
         [SerializeField] private Image iconPrefab;
         [SerializeField] private Button fightButton;
         [SerializeField] private Transform mainContainer;
+        [SerializeField] private Transform shopContainer;
         
         private void Start()
         {
@@ -49,6 +50,7 @@ namespace Gameplay
             fightButton.interactable = false;
             GameController.Instance.LaunchWave();
             mainContainer.DOLocalMove(new Vector3(0, -1000, 0), 0.5f).SetEase(Ease.InSine).SetDelay(0.5f);
+            shopContainer.gameObject.SetActive(false);
         }
 
         private void OnDestroy()

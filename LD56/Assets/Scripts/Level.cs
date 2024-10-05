@@ -7,10 +7,22 @@ namespace Gameplay
 {
     public class Level : MonoBehaviour
     {
-        [SerializeField] private Transform[] pathPoints;
+        [SerializeField] private Transform pathPoints;
         [SerializeField] private Transform mobSpawnPoint;
-
-        public List<Vector3> PathCoords => pathPoints.Select(point => point.position).ToList();
+        [SerializeField] private Transform towerContainer;
+            
+        
         public Vector3 MobSpawnPoint => mobSpawnPoint.position;
+        public Transform TowerContainer => towerContainer;
+
+        public List<Vector3> GetPathCoords()
+        {
+            var coords = new List<Vector3>();
+            foreach (Transform point in pathPoints)
+            {
+                coords.Add(point.position);
+            }
+            return coords;
+        }
     }
 }

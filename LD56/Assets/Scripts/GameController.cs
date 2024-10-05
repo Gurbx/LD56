@@ -13,7 +13,8 @@ namespace Gameplay
         
         [Header("Statics")]
         [SerializeField] private Transform mobContainer;
-        [SerializeField] private Transform towerContainer;
+        //[SerializeField] private Transform towerContainer;
+        [SerializeField] private GameOver gameOver;
         
         public static GameController Instance { get; private set; }
 
@@ -38,6 +39,15 @@ namespace Gameplay
             GoldAmountChanged?.Invoke();
         }
 
+        public void ResetLevel()
+        {
+            Gold = startingGold;
+            MobWave?.Clear();
+            MobWave = new List<(MobData mob, int amount)>();
+            MobWaveUpdated?.Invoke();
+            GoldAmountChanged?.Invoke();
+        }
+
         public void AddMob(MobData mobData, int amount)
         {
             MobWave ??= new List<(MobData mob, int amount)>();
@@ -47,7 +57,7 @@ namespace Gameplay
 
         public void LaunchWave()
         {
-            foreach (Transform tower in towerContainer)
+            foreach (Transform tower in level.TowerContainer)
                 tower.GetComponent<Tower>().Acitvate();
             
             StartCoroutine(SpawnMobs());
@@ -57,7 +67,7 @@ namespace Gameplay
         {
             ActiveMobs = new List<Mob>();
             
-            var path = level.PathCoords;
+            var path = level.GetPathCoords();
             
             foreach (var m in MobWave)
             {
@@ -76,6 +86,17 @@ namespace Gameplay
         public void RemoveMob(Mob mob)
         {
             ActiveMobs.Remove(mob);
+            if (ActiveMobs.Count <= 0 && !_isGameOver)
+            {
+                _isGameOver = true;
+                Invoke("GameOver", 1f);
+            }
+        }
+
+        private bool _isGameOver;
+        private void GameOver()
+        {
+            gameOver.TriggerGameOver();
         }
         
         //---- Gold
