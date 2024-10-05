@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Gameplay
@@ -10,7 +11,8 @@ namespace Gameplay
         [SerializeField] private float range;
         [SerializeField] private int damage;
         [SerializeField] private float cooldown;
-
+        [SerializeField] private Bullet projectilePrefab;
+        
         private bool _isActive;
         private float _timer;
 
@@ -64,9 +66,20 @@ namespace Gameplay
                 _timer = 0.1f;
                 return;
             }
-            
+
             if (closestMob.mob != null)
-                closestMob.mob.Damage(damage);
+            {
+                var bullet = Instantiate(projectilePrefab, transform);
+                float duration = closestMob.distance / 20f;
+                bullet.Spawn(duration);
+                
+                bullet.transform.DOMove(closestMob.mob.transform.position, duration).SetEase(Ease.Linear)
+                    .OnComplete(() =>
+                    {
+                        closestMob.mob.Damage(damage);
+                        Destroy(bullet.gameObject);
+                    });
+            }
 
             _timer = cooldown;
         }

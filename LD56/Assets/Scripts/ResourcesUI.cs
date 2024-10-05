@@ -11,7 +11,7 @@ namespace Gameplay
     {
         [SerializeField] private TextMeshProUGUI goldAmountText;
         
-        private void Awake()
+        private void Start()
         {
             GameController.Instance.GoldAmountChanged += OnGoldAmountChanged;
         }

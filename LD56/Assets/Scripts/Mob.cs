@@ -7,7 +7,9 @@ using UnityEngine;
 namespace Gameplay
 {
     public class Mob : MonoBehaviour
-    { 
+    {
+        [SerializeField] private GameObject hitEffectPrefab;
+        
         private List<Vector3> _pathCoords;
         private MobData _mobData;
         private int _currentPathIndex;
@@ -28,6 +30,15 @@ namespace Gameplay
         public void Damage(int damage)
         {
             _health -= damage;
+
+            if (damage > 0)
+            {
+                var hitEffect = Instantiate(hitEffectPrefab, transform.parent);
+                hitEffect.transform.position = transform.position;
+                hitEffect.SetActive(true);
+                Destroy(hitEffect, 1f);
+            }
+            
             if (_health <= 0)
             {
                 _health = 0;
