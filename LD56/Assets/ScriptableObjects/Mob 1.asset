@@ -20,4 +20,4 @@ MonoBehaviour:
   Speed: 1.5
   MaxUnitSize: 5
   Prefab: {fileID: 4599663736446049187, guid: abc21f8df62f4cb4985cffc3f3e83ed9, type: 3}
-  Icon: {fileID: 21300000, guid: 0adfb2274c820034fa77b4a7b684a302, type: 3}
+  Icon: {fileID: -2170614069236415889, guid: f8ee85d702956e84784f42f68680c718, type: 3}

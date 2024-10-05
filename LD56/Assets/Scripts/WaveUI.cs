@@ -12,6 +12,8 @@ namespace Gameplay
     {
         [SerializeField] private Transform container;
         [SerializeField] private Image iconPrefab;
+        [SerializeField] private Button fightButton;
+        [SerializeField] private Transform mainContainer;
         
         private void Start()
         {
@@ -30,7 +32,7 @@ namespace Gameplay
             foreach (var mw in GameController.Instance.MobWave)
             {
                 var icon = Instantiate(iconPrefab, container);
-                icon.GetComponentInChildren<Image>().sprite = mw.mob.Icon;
+                icon.transform.GetChild(0).GetComponent<Image>().sprite = mw.mob.Icon;
                 icon.GetComponentInChildren<TextMeshProUGUI>().text = $"x{mw.amount}";
                 icon.transform.localScale = Vector3.zero;
                 icon.gameObject.SetActive(true);
@@ -44,7 +46,9 @@ namespace Gameplay
 
         public void ButtonAttack()
         {
+            fightButton.interactable = false;
             GameController.Instance.LaunchWave();
+            mainContainer.DOLocalMove(new Vector3(0, -1000, 0), 0.5f).SetEase(Ease.InSine).SetDelay(0.5f);
         }
 
         private void OnDestroy()

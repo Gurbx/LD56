@@ -10,6 +10,7 @@ namespace Gameplay
     {
         [SerializeField] private GameObject sprite;
         [SerializeField] private GameObject hitEffectPrefab;
+        [SerializeField] private GameObject deathEffectPrefab;
         [SerializeField] private GameObject hpBar;
         [SerializeField] private GameObject hpBarFill;
         
@@ -36,10 +37,6 @@ namespace Gameplay
 
             if (damage > 0)
             {
-                var hitEffect = Instantiate(hitEffectPrefab, transform.parent);
-                hitEffect.transform.position = transform.position;
-                hitEffect.SetActive(true);
-                Destroy(hitEffect, 15f);
                 hpBar.SetActive(true);
             }
             
@@ -48,8 +45,21 @@ namespace Gameplay
                 _health = 0;
                 GameController.Instance.RemoveMob(this);
                 transform.DOKill();
-                sprite.transform.DOShakeScale(0.5f);
+                sprite.transform.DOScale(0f, 0.3f).SetEase(Ease.InBounce);
                 Destroy(gameObject, 0.6f);
+                var deathEffect = Instantiate(deathEffectPrefab, transform.parent);
+                deathEffect.transform.position = transform.position;
+                deathEffect.SetActive(true);
+                Destroy(deathEffect, 15f);
+                CameraHandler.ScreenShake(3f, 1f, 0.15f);
+            }
+            else
+            {
+                CameraHandler.ScreenShake(1.5f, 0.5f, 0.1f);
+                var hitEffect = Instantiate(hitEffectPrefab, transform.parent);
+                hitEffect.transform.position = transform.position;
+                hitEffect.SetActive(true);
+                Destroy(hitEffect, 15f);
             }
 
             hpBarFill.transform.localScale = new Vector3(( _health/(float)_mobData.Health), 1f, 1f);
