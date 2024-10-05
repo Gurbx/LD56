@@ -17,7 +17,8 @@ MonoBehaviour:
   Cost: 50
   Health: 10
   Armor: 0
-  Speed: 1.5
+  Speed: 4
   MaxUnitSize: 5
+  HeartLoss: 1
   Prefab: {fileID: 4599663736446049187, guid: abc21f8df62f4cb4985cffc3f3e83ed9, type: 3}
   Icon: {fileID: -2170614069236415889, guid: f8ee85d702956e84784f42f68680c718, type: 3}

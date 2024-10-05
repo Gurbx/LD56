@@ -50,7 +50,12 @@ namespace Gameplay
             fightButton.interactable = false;
             GameController.Instance.LaunchWave();
             mainContainer.DOLocalMove(new Vector3(0, -1000, 0), 0.5f).SetEase(Ease.InSine).SetDelay(0.5f);
-            shopContainer.gameObject.SetActive(false);
+        }
+
+        public void Show()
+        {
+            fightButton.interactable = true;
+            mainContainer.DOLocalMove(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.OutSine).SetDelay(0.5f);
         }
 
         private void OnDestroy()

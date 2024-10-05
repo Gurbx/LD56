@@ -69,7 +69,10 @@ namespace Gameplay
         {
             if (_currentPathIndex >= _pathCoords.Count)
             {
-                //End reached
+                transform.DOKill();
+                sprite.transform.DOScale(0f, 0.3f).SetEase(Ease.InBounce);
+                Destroy(gameObject, 0.6f);
+                GameController.Instance.MobReachedEnd(_mobData.HeartLoss, this);
                 return;
             }
             

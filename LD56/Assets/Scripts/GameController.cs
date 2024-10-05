@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,22 +9,28 @@ namespace Gameplay
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private int startingGold;
-        [SerializeField] private Level level;
+        //[SerializeField] private int startingGold;
+        [SerializeField] private Level[] levels;
         
         [Header("Statics")]
         [SerializeField] private Transform mobContainer;
-        //[SerializeField] private Transform towerContainer;
         [SerializeField] private GameOver gameOver;
+        [SerializeField] private LevelTransition levelTransition;
+        [SerializeField] private WaveUI waveUi;
         
         public static GameController Instance { get; private set; }
 
         public int Gold { get; private set; }
+        public int Hearts { get; private set; }
         public List<(MobData mob, int amount)> MobWave { get; private set; }
         public List<Mob> ActiveMobs { get; private set; }
         
         public Action GoldAmountChanged;
         public Action MobWaveUpdated;
+        public Action HeartsUpdated;
+
+        private static int CurrentLevelIndex;
+        private Level _level;
         
         private void Awake()
         {
@@ -35,17 +42,29 @@ namespace Gameplay
 
         private void Start()
         {
-            Gold = startingGold;
-            GoldAmountChanged?.Invoke();
+            ResetLevel();
         }
 
         public void ResetLevel()
         {
-            Gold = startingGold;
+            if (_level != null)
+                Destroy(_level.gameObject);
+            
+            _level = Instantiate(levels[CurrentLevelIndex]);
+            Gold = _level.Gold;
+            Hearts = _level.Hearts;
             MobWave?.Clear();
             MobWave = new List<(MobData mob, int amount)>();
             MobWaveUpdated?.Invoke();
             GoldAmountChanged?.Invoke();
+            HeartsUpdated?.Invoke();
+            waveUi.Show();
+
+            foreach (Transform child in mobContainer)
+            {
+                child.DOKill(child);
+                Destroy(child.gameObject);
+            }
         }
 
         public void AddMob(MobData mobData, int amount)
@@ -57,7 +76,7 @@ namespace Gameplay
 
         public void LaunchWave()
         {
-            foreach (Transform tower in level.TowerContainer)
+            foreach (Transform tower in _level.TowerContainer)
                 tower.GetComponent<Tower>().Acitvate();
             
             StartCoroutine(SpawnMobs());
@@ -67,14 +86,14 @@ namespace Gameplay
         {
             ActiveMobs = new List<Mob>();
             
-            var path = level.GetPathCoords();
+            var path = _level.GetPathCoords();
             
             foreach (var m in MobWave)
             {
                 for (int i = 0; i < m.amount; i++)
                 {
                     var mob = Instantiate(m.mob.Prefab, mobContainer);
-                    mob.Spawn(m.mob, level.MobSpawnPoint, path);
+                    mob.Spawn(m.mob, path[0], path);
                     ActiveMobs.Add(mob);
                     yield return new WaitForSeconds(0.25f);
                 }
@@ -93,10 +112,30 @@ namespace Gameplay
             }
         }
 
+        public void MobReachedEnd(int heartLoss, Mob mob)
+        {
+            Hearts -= heartLoss;
+            if (Hearts <= 0)
+                Hearts = 0;
+            
+            HeartsUpdated?.Invoke();
+            RemoveMob(mob);
+        }
+
         private bool _isGameOver;
         private void GameOver()
         {
-            gameOver.TriggerGameOver();
+            if (Hearts > 0) 
+                gameOver.TriggerGameOver();
+            else if (CurrentLevelIndex+1 < levels.Length)
+            {
+                CurrentLevelIndex++;
+                levelTransition.TransitionLevel();
+            }
+            else
+            {
+                //TODO win screen
+            }
         }
         
         //---- Gold

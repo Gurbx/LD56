@@ -7,12 +7,16 @@ namespace Gameplay
 {
     public class Level : MonoBehaviour
     {
-        [SerializeField] private Transform pathPoints;
-        [SerializeField] private Transform mobSpawnPoint;
-        [SerializeField] private Transform towerContainer;
-            
+        [SerializeField] private int hearts;
+        [SerializeField] private int gold;
         
-        public Vector3 MobSpawnPoint => mobSpawnPoint.position;
+        [SerializeField] private Transform pathPoints;
+        //[SerializeField] private Transform mobSpawnPoint;
+        [SerializeField] private Transform towerContainer;
+
+        public int Hearts => hearts;
+        public int Gold => gold;
+        //public Vector3 MobSpawnPoint => mobSpawnPoint.position;
         public Transform TowerContainer => towerContainer;
 
         public List<Vector3> GetPathCoords()
