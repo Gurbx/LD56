@@ -8,16 +8,30 @@ namespace Gameplay
 {
     public class GameController : MonoBehaviour
     {
+        [SerializeField] private int startingGold;
         [SerializeField] private Level level;
         
         [Header("Statics")]
         [SerializeField] private Transform mobContainer;
         
         public static GameController Instance { get; private set; }
+
+        public Action GoldAmountChanged;
+
+        public int Gold { get; private set; }
         
         private void Awake()
         {
+            if (Instance != null)
+                return;
+            
             Instance = this;
+        }
+
+        private void Start()
+        {
+            Gold = startingGold;
+            GoldAmountChanged?.Invoke();
         }
 
         public IEnumerator SpawnMobs(List<(Mob mob, int amount)> mobs)
@@ -33,6 +47,25 @@ namespace Gameplay
 
                 yield return new WaitForSeconds(0.5f);
             }
+        }
+
+        public bool SpendGold(int amount)
+        {
+            if (amount <= 0)
+                return false;
+            if (Gold < amount)
+                return false;
+            Gold -= amount;
+            GoldAmountChanged?.Invoke();
+            return true;
+        }
+
+        public void AddGold(int amount)
+        {
+            if (amount <= 0)
+                return;
+            Gold += amount;
+            GoldAmountChanged?.Invoke();
         }
     }
 }

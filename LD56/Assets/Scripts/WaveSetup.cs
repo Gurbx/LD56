@@ -6,6 +6,5 @@ namespace Gameplay
 {
     public class WaveSetup : MonoBehaviour
     {
-        
     }
 }

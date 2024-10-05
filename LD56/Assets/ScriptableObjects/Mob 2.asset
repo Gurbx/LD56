@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc626171d9820449b03c4dfe30fc9a6, type: 3}
+  m_Name: Mob 2
+  m_EditorClassIdentifier: 
+  Name: Mob 2
+  Description: This is a stronger mob
+  Health: 20
+  Armor: 0
+  Speed: 1
+  Prefab: {fileID: 4599663736446049187, guid: 0dcc7c8bc1647b64090f3bbb63b73d48, type: 3}
