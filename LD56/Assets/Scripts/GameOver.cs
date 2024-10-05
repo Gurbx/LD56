@@ -29,7 +29,10 @@ namespace Gameplay
 
         public void ButtonRetry()
         {
-            //TODO
+            retryButton.gameObject.SetActive(false);
+            gameOverText.color = new Color(1f, 1f, 1f, 0f);
+            fade.DOFade(1f, 0.5f).OnComplete(() =>   GameController.Instance.ResetLevel());
+            fade.DOFade(0f, 0.5f).SetDelay(0.5f).OnComplete(() =>   fade.gameObject.SetActive(false));
         }
     }
 }
