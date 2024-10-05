@@ -8,7 +8,10 @@ namespace Gameplay
 {
     public class Mob : MonoBehaviour
     {
+        [SerializeField] private GameObject sprite;
         [SerializeField] private GameObject hitEffectPrefab;
+        [SerializeField] private GameObject hpBar;
+        [SerializeField] private GameObject hpBarFill;
         
         private List<Vector3> _pathCoords;
         private MobData _mobData;
@@ -36,7 +39,8 @@ namespace Gameplay
                 var hitEffect = Instantiate(hitEffectPrefab, transform.parent);
                 hitEffect.transform.position = transform.position;
                 hitEffect.SetActive(true);
-                Destroy(hitEffect, 1f);
+                Destroy(hitEffect, 15f);
+                hpBar.SetActive(true);
             }
             
             if (_health <= 0)
@@ -44,9 +48,11 @@ namespace Gameplay
                 _health = 0;
                 GameController.Instance.RemoveMob(this);
                 transform.DOKill();
-                transform.DOShakeScale(0.5f);
+                sprite.transform.DOShakeScale(0.5f);
                 Destroy(gameObject, 0.6f);
             }
+
+            hpBarFill.transform.localScale = new Vector3(( _health/(float)_mobData.Health), 1f, 1f);
         }
         
         private void CheckPointReached()

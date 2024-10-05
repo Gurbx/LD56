@@ -8,6 +8,7 @@ namespace Gameplay
 {
     public class Tower : MonoBehaviour
     {
+        [SerializeField] private Animator animator;
         [SerializeField] private float range;
         [SerializeField] private int damage;
         [SerializeField] private float cooldown;
@@ -70,6 +71,7 @@ namespace Gameplay
             if (closestMob.mob != null)
             {
                 var bullet = Instantiate(projectilePrefab, transform);
+                bullet.gameObject.SetActive(true);
                 float duration = closestMob.distance / 20f;
                 bullet.Spawn(duration);
                 
@@ -79,6 +81,8 @@ namespace Gameplay
                         closestMob.mob.Damage(damage);
                         Destroy(bullet.gameObject);
                     });
+                
+                animator.SetTrigger($"Fire");
             }
 
             _timer = cooldown;
