@@ -13,6 +13,7 @@ namespace Gameplay
         [SerializeField] private GameObject deathEffectPrefab;
         [SerializeField] private GameObject hpBar;
         [SerializeField] private GameObject hpBarFill;
+        [SerializeField] private SpriteRenderer sr;
         
         private List<Vector3> _pathCoords;
         private MobData _mobData;
@@ -84,6 +85,9 @@ namespace Gameplay
             
             var distanceToNext = Vector3.Distance(transform.position, _pathCoords[_currentPathIndex]);
             float durationToNext = distanceToNext / _speed;
+
+            Vector3 dir = (this.transform.position - _pathCoords[_currentPathIndex]).normalized;
+            sr.flipX = dir.x > 0; 
             
             transform.DOMove(_pathCoords[_currentPathIndex], durationToNext).SetEase(Ease.Linear)
                 .OnComplete(() => CheckPointReached());

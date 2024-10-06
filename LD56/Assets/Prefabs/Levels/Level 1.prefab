@@ -2424,11 +2424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: gold
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: hearts
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: availableMobs.Array.size
@@ -2461,6 +2461,10 @@ PrefabInstance:
     - target: {fileID: 5564740313942171908, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564740313942171908, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
+      propertyPath: cooldown
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5650219198935861316, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: m_IsActive
@@ -2528,7 +2532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7988167851530881579, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: m_Name
-      value: Level1
+      value: Level 1
       objectReference: {fileID: 0}
     - target: {fileID: 8095587205351472576, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: m_IsActive
@@ -3935,6 +3939,10 @@ PrefabInstance:
     - target: {fileID: 5221262236982094725, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
       propertyPath: damage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221262236982094725, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
+      propertyPath: cooldown
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

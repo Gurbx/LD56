@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 15a233bc25614b54e97c9b03b0e15eb3, type: 2}
+    - target: {fileID: 5221262236982094725, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5522170939660821776, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
       propertyPath: m_Sprite
       value: 

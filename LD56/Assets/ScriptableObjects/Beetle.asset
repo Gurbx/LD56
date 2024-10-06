@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Beetle
   Description: This is a basic mob
   Cost: 150
-  Health: 10
+  Health: 8
   Armor: 1
   Speed: 2.5
   MaxUnitSize: 1

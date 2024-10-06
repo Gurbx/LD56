@@ -5345,9 +5345,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4811494804359078950}
-  range: 5
+  range: 4
   damage: 1
-  cooldown: 0.5
+  cooldown: 0.75
   projectilePrefab: {fileID: 2925082633531511983}
 --- !u!1 &6899222359905925903
 GameObject:

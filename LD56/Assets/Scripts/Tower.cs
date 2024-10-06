@@ -8,11 +8,18 @@ namespace Gameplay
 {
     public class Tower : MonoBehaviour
     {
+        private enum Targeting
+        {
+            Farthest,
+            Closest
+        }
+        
         [SerializeField] private Animator animator;
         [SerializeField] private float range;
         [SerializeField] private int damage;
         [SerializeField] private float cooldown;
         [SerializeField] private Bullet projectilePrefab;
+        [SerializeField] private Targeting targeting;
         
         private bool _isActive;
         private float _timer;
@@ -51,21 +58,37 @@ namespace Gameplay
             }
             
             (Mob mob, float distance) closestMob = new(null, float.MaxValue);
-            
-            foreach (var mob in mobs)
+
+            // Closest in range
+            if (targeting == Targeting.Closest)
             {
-                var distance = Vector3.Distance(transform.position, mob.transform.position);
-                if (distance < closestMob.distance)
+                foreach (var mob in mobs)
                 {
-                    closestMob.mob = mob;
-                    closestMob.distance = distance;
+                    var distance = Vector3.Distance(transform.position, mob.transform.position);
+                    if (distance < closestMob.distance)
+                    {
+                        closestMob.mob = mob;
+                        closestMob.distance = distance;
+                    }
+                }
+
+                if (closestMob.distance > range)
+                {
+                    _timer = 0.1f;
+                    return;
                 }
             }
-
-            if (closestMob.distance > range)
+            // Farthest along path that is in range
+            else if (targeting == Targeting.Farthest)
             {
-                _timer = 0.1f;
-                return;
+                foreach (var mob in mobs)
+                {
+                    var distance = Vector3.Distance(transform.position, mob.transform.position);
+                    if (!(distance <= range)) continue;
+                    closestMob.mob = mob;
+                    closestMob.distance = distance;
+                    break;
+                }
             }
 
             if (closestMob.mob != null)

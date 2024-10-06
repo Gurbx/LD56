@@ -15066,6 +15066,7 @@ MonoBehaviour:
   deathEffectPrefab: {fileID: 1563445232983458646}
   hpBar: {fileID: 4190427165065396423}
   hpBarFill: {fileID: 4681976395164876025}
+  sr: {fileID: 8448647053118990811}
 --- !u!1 &7215337656919111278
 GameObject:
   m_ObjectHideFlags: 0

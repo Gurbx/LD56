@@ -15,10 +15,10 @@ MonoBehaviour:
   Name: Ant
   Description: This is a basic mob
   Cost: 50
-  Health: 6
+  Health: 5
   Armor: 0
   Speed: 3
-  MaxUnitSize: 3
+  MaxUnitSize: 4
   HeartLoss: 1
   Prefab: {fileID: 4599663736446049187, guid: bee82dab9f819de46a1924634cf4d539, type: 3}
   Icon: {fileID: 235209999, guid: 89eb53829601f32448cb1e3ecf6b749c, type: 3}

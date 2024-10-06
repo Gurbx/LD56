@@ -13,11 +13,13 @@ namespace Gameplay
     {
         [SerializeField] private Image fade;
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private TextMeshProUGUI text2;
         [SerializeField] private GameObject button;
 
         private void Start()
         {
             text.transform.localScale = Vector3.zero;
+            text2.transform.localScale = Vector3.zero;
             button.transform.localScale = Vector3.zero;
 
             fade.gameObject.SetActive(true);
@@ -25,6 +27,7 @@ namespace Gameplay
             fade.DOFade(0f, 0.5f).SetDelay(0.2f).OnComplete(() => fade.gameObject.SetActive(false));
             
             text.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack).SetDelay(1.5f);
+            text2.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack).SetDelay(1.8f);
             button.transform.DOScale(1, 0.3f).SetEase(Ease.OutBack).SetDelay(2.5f);
         }
 

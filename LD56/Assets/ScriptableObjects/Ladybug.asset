@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Ladybug
   Description: This is a stronger mob
-  Cost: 100
-  Health: 10
+  Cost: 150
+  Health: 16
   Armor: 0
   Speed: 3
   MaxUnitSize: 2
