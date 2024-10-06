@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Beetle
   Description: This is a basic mob
-  Cost: 50
-  Health: 3
-  Armor: 0
-  Speed: 4
-  MaxUnitSize: 5
-  HeartLoss: 1
+  Cost: 150
+  Health: 10
+  Armor: 1
+  Speed: 2.5
+  MaxUnitSize: 1
+  HeartLoss: 0
   Prefab: {fileID: 4599663736446049187, guid: 4477b971da6cfa64dad992129d6f94f6, type: 3}
   Icon: {fileID: -1290234506, guid: f4438947171d94542966fee70cdb000b, type: 3}

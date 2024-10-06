@@ -37,9 +37,11 @@ namespace Gameplay
 
         public void Damage(int damage)
         {
-            _health -= damage;
+            var actualDamage = damage - _mobData.Armor;
+            
+            _health -= actualDamage;
 
-            if (damage > 0)
+            if (actualDamage > 0)
             {
                 hpBar.SetActive(true);
             }
