@@ -47,6 +47,15 @@ namespace Gameplay
 
         public void ButtonAttack()
         {
+            if (GameController.Instance.MobWave.Count <= 0)
+                return;
+
+            foreach (Transform child in container)
+            {
+                child.transform.localScale = Vector3.zero;
+                child.transform.DOScale(1f, 0.5f).SetEase(Ease.OutBounce);
+            }
+            
             fightButton.interactable = false;
             GameController.Instance.LaunchWave();
             mainContainer.DOLocalMove(new Vector3(0, -1000, 0), 0.5f).SetEase(Ease.InSine).SetDelay(0.5f);

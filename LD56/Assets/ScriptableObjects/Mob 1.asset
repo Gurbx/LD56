@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc626171d9820449b03c4dfe30fc9a6, type: 3}
   m_Name: Mob 1
   m_EditorClassIdentifier: 
-  Name: Mob 1
+  Name: Larvae
   Description: This is a basic mob
   Cost: 50
   Health: 10

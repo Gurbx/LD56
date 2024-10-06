@@ -36,7 +36,7 @@ namespace Gameplay
             textCost.text = $"Cost: " + mobData.Cost.ToString();
             textHealth.text = $"Health: " + mobData.Health.ToString();
             textSpeed.text = $"Speed: " + mobData.Speed.ToString();
-            textGroupSize.text = $"Max Group Size: " + mobData.MaxUnitSize.ToString();
+            textGroupSize.text = $"Group Size: " + mobData.MaxUnitSize.ToString();
             
             if (mobData.Armor <= 0) textArmor.transform.parent.gameObject.SetActive(false);
             else textArmor.text = $"Armor: " + mobData.Armor.ToString();
@@ -48,7 +48,7 @@ namespace Gameplay
         {
             textPurchaseButtonAmount.text = $"Purchase x{_amount}";
             textPurchaseButtonCost.text = (_mobData.Cost * _amount).ToString();
-            textPurchaseButtonCost.color = GameController.Instance.Gold < _mobData.Cost * _amount ? Color.red : Color.black;
+            textPurchaseButtonCost.color = GameController.Instance.Gold < _mobData.Cost * _amount ? Color.red : Color.white;
         }
 
         public void Hide()

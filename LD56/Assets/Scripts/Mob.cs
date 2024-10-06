@@ -28,6 +28,10 @@ namespace Gameplay
             transform.position = new Vector2(spawnCoords.x, spawnCoords.y);
             _health = _mobData.Health;
             _speed = _mobData.Speed;
+            
+            sprite.transform.localScale = Vector3.zero;
+            sprite.transform.DOScale(1f, 0.2f).SetEase(Ease.OutBounce);
+            
             CheckPointReached();
         }
 
