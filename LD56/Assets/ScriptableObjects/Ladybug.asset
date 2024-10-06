@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdc626171d9820449b03c4dfe30fc9a6, type: 3}
-  m_Name: Mob 2
+  m_Name: Ladybug
   m_EditorClassIdentifier: 
-  Name: Mob 2
+  Name: Ladybug
   Description: This is a stronger mob
   Cost: 100
   Health: 20
   Armor: 0
   Speed: 2
   MaxUnitSize: 5
+  HeartLoss: 1
   Prefab: {fileID: 4599663736446049187, guid: 0dcc7c8bc1647b64090f3bbb63b73d48, type: 3}
-  Icon: {fileID: 21300000, guid: 9865ca019e5a293409ffdee94f640b91, type: 3}
+  Icon: {fileID: -4453651280339392404, guid: e9a3c041326080c4293a53996dfe9022, type: 3}

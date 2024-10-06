@@ -1720,6 +1720,18 @@ PrefabInstance:
       propertyPath: hearts
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
+      propertyPath: availableMobs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
+      propertyPath: availableMobs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: dcf311915e2b17241b038dcfbcfd7c2f, type: 2}
+    - target: {fileID: 4577926161624480414, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
+      propertyPath: availableMobs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c770fb588dee8e47b8a9f4fc355a436, type: 2}
     - target: {fileID: 5149418257748604364, guid: b9e69b7aa1376704bb8823bd4c6f3851, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3

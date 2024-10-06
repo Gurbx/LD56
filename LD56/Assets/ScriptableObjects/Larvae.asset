@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdc626171d9820449b03c4dfe30fc9a6, type: 3}
-  m_Name: Mob 1
+  m_Name: Larvae
   m_EditorClassIdentifier: 
   Name: Larvae
   Description: This is a basic mob
   Cost: 50
-  Health: 10
+  Health: 3
   Armor: 0
   Speed: 4
   MaxUnitSize: 5

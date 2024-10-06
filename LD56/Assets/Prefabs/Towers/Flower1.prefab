@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4039046603248462173, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
       propertyPath: m_Name
-      value: Flower1 Variant
+      value: Flower1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221262236982094725, guid: d8142fcfbcf814b47b2ad31505dfcbea, type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

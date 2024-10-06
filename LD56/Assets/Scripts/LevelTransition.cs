@@ -11,13 +11,16 @@ namespace Gameplay
     {
         [SerializeField] private Image image;
 
-        public void TransitionLevel(bool goToEndScreen)
+        public void TransitionLevel(bool goToEndScreen, bool showMobUnlock)
         {
             image.gameObject.SetActive(true);
             image.color = new Color(0f, 0f, 0f, 0f);
+            if (showMobUnlock)
+            {
+                image.DOFade(1f, 0.5f).OnComplete(() =>  SceneManager.LoadScene("UnlockScene", LoadSceneMode.Single));
+            }
             if (goToEndScreen)
             {
-                Debug.Log($"Going to end screen");
                 image.DOFade(1f, 0.5f).OnComplete(() =>  SceneManager.LoadScene("VictoryScreen", LoadSceneMode.Single));
             }
             else

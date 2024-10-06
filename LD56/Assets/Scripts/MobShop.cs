@@ -9,7 +9,6 @@ namespace Gameplay
 {
     public class MobShop : MonoBehaviour
     {
-        [SerializeField] private List<MobData> availableMobs;
         [SerializeField] private Button mobButtonPrefab;
         [SerializeField] private Transform mobButtonContainer;
         [SerializeField] private BuyMobWindow buyMobWindow;
@@ -17,7 +16,7 @@ namespace Gameplay
 
         private void Start()
         {
-            foreach (var md in availableMobs)
+            foreach (var md in GameController.Instance.AvailableMobs)
             {
                 var mb = Instantiate(mobButtonPrefab, mobButtonContainer);
                 mb.onClick.AddListener((() => MobButtonPressed(md)));

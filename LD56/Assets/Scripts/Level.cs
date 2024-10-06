@@ -9,14 +9,14 @@ namespace Gameplay
     {
         [SerializeField] private int hearts;
         [SerializeField] private int gold;
+        [SerializeField] private List<MobData> availableMobs;
         
         [SerializeField] private Transform pathPoints;
-        //[SerializeField] private Transform mobSpawnPoint;
         [SerializeField] private Transform towerContainer;
 
         public int Hearts => hearts;
         public int Gold => gold;
-        //public Vector3 MobSpawnPoint => mobSpawnPoint.position;
+        public  List<MobData> AvailableMobs => availableMobs;
         public Transform TowerContainer => towerContainer;
 
         public List<Vector3> GetPathCoords()

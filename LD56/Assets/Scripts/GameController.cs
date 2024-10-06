@@ -24,6 +24,7 @@ namespace Gameplay
         public int Hearts { get; private set; }
         public List<(MobData mob, int amount)> MobWave { get; private set; }
         public List<Mob> ActiveMobs { get; private set; }
+        public List<MobData> AvailableMobs { get; private set; }
         
         public Action GoldAmountChanged;
         public Action MobWaveUpdated;
@@ -60,6 +61,7 @@ namespace Gameplay
             HeartsUpdated?.Invoke();
             waveUi.Show();
             _isGameOver = false;
+            AvailableMobs = _level.AvailableMobs;
             
             foreach (Transform child in mobContainer)
             {
@@ -134,11 +136,17 @@ namespace Gameplay
             if (CurrentLevelIndex+1 < levels.Length)
             {
                 CurrentLevelIndex++;
-                levelTransition.TransitionLevel(false);
+
+                bool showMobUnlock = false || AvailableMobs.Count < levels[CurrentLevelIndex].AvailableMobs.Count;
+                if (showMobUnlock)
+                {
+                    UnlockMenu.MobData = levels[CurrentLevelIndex].AvailableMobs[^1];
+                }
+                levelTransition.TransitionLevel(false, showMobUnlock);
             }
             else
             {
-                levelTransition.TransitionLevel(true);
+                levelTransition.TransitionLevel(true, false);
             }
         }
         
