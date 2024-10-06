@@ -3496,8 +3496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a66b0657209914f9ec9d7b26edeb2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableMobs:
-  - {fileID: 11400000, guid: dcf311915e2b17241b038dcfbcfd7c2f, type: 2}
   mobButtonPrefab: {fileID: 827872710}
   mobButtonContainer: {fileID: 7225425}
   buyMobWindow: {fileID: 589788939}

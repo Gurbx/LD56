@@ -10,12 +10,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 139007967009656154, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_Name
-      value: Ladybug
+      value: Beetle
       objectReference: {fileID: 0}
     - target: {fileID: 1301041669222308581, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ca06aef6753676a4ab3bb6ba4aac0668, type: 2}
+      objectReference: {fileID: 9100000, guid: 3bfb7f17361381e4cb14dfd73f65a7d1, type: 2}
     - target: {fileID: 3901882259691695102, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -58,12 +58,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6838939080055674435, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_Name
-      value: Mob 2
+      value: Mob 3
       objectReference: {fileID: 0}
     - target: {fileID: 8448647053118990811, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1082830064, guid: 3db1ccca00fbf474aa9bf88bddc7aa5c, type: 3}
+      objectReference: {fileID: -1290234506, guid: f4438947171d94542966fee70cdb000b, type: 3}
     - target: {fileID: 8448647053118990811, guid: ee91caf4e597abe4fa0f5ccf6d123f74, type: 3}
       propertyPath: m_Color.b
       value: 1
