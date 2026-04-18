@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Beetle
   m_EditorClassIdentifier: 
   Name: Beetle
-  Description: This is a basic mob
+  Description: "A powerful, durable unit that can\u2019t steal sugar but excels at
+    clearing obstacles and protecting others on the path. Ideal for leading the charge."
   Cost: 150
   Health: 8
   Armor: 1

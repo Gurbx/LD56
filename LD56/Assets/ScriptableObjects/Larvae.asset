@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Larvae
   m_EditorClassIdentifier: 
   Name: Larvae
-  Description: This is a basic mob
+  Description: A fast but fragile unit that excels at stealing large amounts of sugar.
+    Quick to the goal, but vulnerable along the way.
   Cost: 50
   Health: 2
   Armor: 0

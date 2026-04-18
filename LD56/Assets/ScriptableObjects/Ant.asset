@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ant
   m_EditorClassIdentifier: 
   Name: Ant
-  Description: This is a basic mob
+  Description: 'A basic ant focused on one goal: reaching the end of the path to
+    steal sugar. Simple, but relentless in its mission.'
   Cost: 50
   Health: 5
   Armor: 0

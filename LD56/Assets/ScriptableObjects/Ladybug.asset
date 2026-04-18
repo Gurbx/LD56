@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ladybug
   m_EditorClassIdentifier: 
   Name: Ladybug
-  Description: This is a stronger mob
+  Description: 'A stronger, more durable unit with the same mission: reach the end
+    of the path to steal sugar. Tougher than the ant but still focused on the goal.'
   Cost: 150
   Health: 16
   Armor: 0
